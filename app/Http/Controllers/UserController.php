@@ -295,7 +295,7 @@ class UserController extends Controller
         $query = User::query();
 
         if ($request->gender) {
-            $query->where('gender', '=', $request->gender);
+            $query->where('gender', $request->gender);
         }
 
         if ($request->search_by) {

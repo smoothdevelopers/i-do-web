@@ -10,3 +10,4 @@ Homestead.yaml
 node_modules
 /vendor
 /node_modules
+/public/docs

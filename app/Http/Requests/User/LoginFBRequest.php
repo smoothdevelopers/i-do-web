@@ -30,6 +30,7 @@ class LoginFBRequest extends FormRequest
             'fb_id' => 'required|string',
             'name'  => 'string',
             'phone' => 'string',
+            'email' => 'email|unique:users',
             'gender' => 'string|in:male,female',
             'profile_pic' => 'image',
         ];
