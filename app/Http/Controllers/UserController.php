@@ -146,7 +146,7 @@ class UserController extends Controller
                 }
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.errors.invalid_login'),
+                    'error-code'        => config('const.errors.user.invalid_login'),
                     'error-description' => 'invalid login credentials'
                 ], Response::HTTP_UNAUTHORIZED);
             }
