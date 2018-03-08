@@ -90,7 +90,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.unauthorized_creation'),
+                    'error-code'        => config('const.errors.unauthorized_creation'),
                     'error-description' => 'there must be a couple to create an engagement, either the name for one or ids for both',
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -99,7 +99,7 @@ class EngagementController extends Controller
             if (!$groom) {
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.user_not_found'),
+                    'error-code'        => config('const.errors.user_not_found'),
                     'error-description' => 'could not find the user creating the engagement',
                 ], Response::HTTP_NOT_FOUND);   
             }
@@ -108,7 +108,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.unauthorized_creation'),
+                    'error-code'        => config('const.errors.unauthorized_creation'),
                     'error-description' => 'the authenticated user must be one of the engaged couple'
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -117,7 +117,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.already_created'),
+                    'error-code'        => config('const.errors.already_created'),
                     'error-description' => 'this user already has an engagement'
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -128,7 +128,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.unauthorized_creation'),
+                    'error-code'        => config('const.errors.unauthorized_creation'),
                     'error-description' => 'there must be a couple to create an engagement, either the name for one or ids for both',
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -137,7 +137,7 @@ class EngagementController extends Controller
             if (! $bride) {
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.user_not_found'),
+                    'error-code'        => config('const.errors.user_not_found'),
                     'error-description' => 'could not find the user creating the engagement',
                 ], Response::HTTP_NOT_FOUND);   
             }
@@ -146,7 +146,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.unauthorized_creation'),
+                    'error-code'        => config('const.errors.unauthorized_creation'),
                     'error-description' => 'the authenticated user must be one of the engaged couple'
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -159,7 +159,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.user_not_found'),
+                    'error-code'        => config('const.errors.user_not_found'),
                     'error-description' => 'either the groom or bride is not a registered user'
                 ], Response::HTTP_NOT_FOUND);
             }
@@ -168,7 +168,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.already_created'),
+                    'error-code'        => config('const.errors.already_created'),
                     'error-description' => 'one of the couple already has an engagement',
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -190,7 +190,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully saved engagement',
             'id'                => $engagement->id,
         ], Response::HTTP_OK);
@@ -210,7 +210,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'this user does not have an engagement'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -223,7 +223,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.unauthorized_creation'),
+                    'error-code'        => config('const.errors.unauthorized_creation'),
                     'error-description' => 'there must be a couple to update an engagement, either the name for one or ids for both',
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -232,7 +232,7 @@ class EngagementController extends Controller
             if (!$groom) {
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.user_not_found'),
+                    'error-code'        => config('const.errors.user_not_found'),
                     'error-description' => 'could not find the user updating the engagement',
                 ], Response::HTTP_NOT_FOUND);   
             }
@@ -241,7 +241,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.unauthorized_creation'),
+                    'error-code'        => config('const.errors.unauthorized_creation'),
                     'error-description' => 'the authenticated user must be one of the engaged couple'
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -252,7 +252,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.unauthorized_creation'),
+                    'error-code'        => config('const.errors.unauthorized_creation'),
                     'error-description' => 'there must be a couple to create an engagement, either the name for one or ids for both',
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -261,7 +261,7 @@ class EngagementController extends Controller
             if (! $bride) {
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.user_not_found'),
+                    'error-code'        => config('const.errors.user_not_found'),
                     'error-description' => 'could not find the user updating the engagement',
                 ], Response::HTTP_NOT_FOUND);   
             }
@@ -270,7 +270,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.unauthorized_creation'),
+                    'error-code'        => config('const.errors.unauthorized_creation'),
                     'error-description' => 'the authenticated user must be one of the engaged couple'
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -285,7 +285,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.user_not_found'),
+                    'error-code'        => config('const.errors.user_not_found'),
                     'error-description' => 'either the groom or bride is not a registered user'
                 ], Response::HTTP_NOT_FOUND);
             }
@@ -294,7 +294,7 @@ class EngagementController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.already_created'),
+                    'error-code'        => config('const.errors.already_created'),
                     'error-description' => 'one of the couple already has an engagement',
                 ], Response::HTTP_NOT_ACCEPTABLE);
             }
@@ -317,7 +317,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully updated engagement',
             'id'                => $engagement->id,
         ], Response::HTTP_OK);
@@ -333,7 +333,7 @@ class EngagementController extends Controller
     {
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully retrieved engagements',
             'engagements'       => Engagement::where('privacy', '=', config('const.privacy.public'))
                                              ->where('status', '=', config('const.status.accepted'))
@@ -354,7 +354,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no engagement could be found for this id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -362,7 +362,7 @@ class EngagementController extends Controller
         if ( $engagement->privacy != config('const.privacy.public')) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_access'),
+                'error-code'        => config('const.errors.unauthorized_access'),
                 'error-description' => 'this user has no right to access this engagement'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -371,7 +371,7 @@ class EngagementController extends Controller
         $engData['image'] = $engagement->getFirsMediaUrl('image');
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'engagement found',
             'engagement'        => $engData,
         ], Response::HTTP_OK);
@@ -393,7 +393,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_access'),
+                'error-code'        => config('const.errors.unauthorized_access'),
                 'error-description' => 'this user has no right to change this engagement'
             ], Response::HTTP_NOT_ACCEPTABLE);
         }
@@ -401,7 +401,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'engagement successfully closed',
         ], Response::HTTP_OK);
     }
@@ -421,7 +421,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'this user does not have an engagement'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -430,7 +430,7 @@ class EngagementController extends Controller
         $engData['image'] = $engagement->getFirstMediaUrl('image');
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => "successfully retrieved this user's engagement",
             'engagement'        => $engData,
         ], Response::HTTP_OK);
@@ -453,7 +453,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no engagement was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -466,7 +466,7 @@ class EngagementController extends Controller
         if (! ($invitedUser || ($engagement->privacy == config('const.privacy.public')))) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_access'),
+                'error-code'        => config('const.errors.unauthorized_access'),
                 'error-description' => 'this user has no authority to comment on this engagement',
             ], Response::HTTP_NOT_FOUND);
         }
@@ -479,7 +479,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully updated comment',
             'id'                => $comment->id,
         ], Response::HTTP_OK);
@@ -500,7 +500,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no engagement was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -513,14 +513,14 @@ class EngagementController extends Controller
         if (! ($invitedUser || ($engagement->privacy == config('const.privacy.public')))) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_access'),
+                'error-code'        => config('const.errors.unauthorized_access'),
                 'error-description' => 'this user has no authority to comment on this engagement',
             ], Response::HTTP_NOT_FOUND);
         }
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully retrieved engagement comments',
             'comments'          => $engagement->comments()->paginate(config('const.pages.small'))->toArray(),
         ]);
@@ -540,7 +540,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.comment_not_found'),
+                'error-code'        => config('const.errors.comment_not_found'),
                 'error-description' => 'no comment could be found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -549,7 +549,7 @@ class EngagementController extends Controller
         if ($comment->user_id != $authUser->id) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_access'),
+                'error-code'        => config('const.errors.unauthorized_access'),
                 'error-description' => 'this user has no authority to comment on this engagement',
             ], Response::HTTP_NOT_FOUND);
         }
@@ -565,7 +565,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'comment successfully updated',
         ], Response::HTTP_OK);
     }
@@ -585,7 +585,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no comment could be found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -594,7 +594,7 @@ class EngagementController extends Controller
         if ($comment->user_id != $authUser->id) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_access'),
+                'error-code'        => config('const.errors.unauthorized_access'),
                 'error-description' => 'this user has no authority to comment on this engagement',
             ], Response::HTTP_NOT_FOUND);
         }
@@ -603,7 +603,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'comment successfully deleted',
         ], Response::HTTP_OK);
     }
@@ -622,7 +622,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no engagement was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -633,7 +633,7 @@ class EngagementController extends Controller
         if ($like) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_creation'),
+                'error-code'        => config('const.errors.unauthorized_creation'),
                 'error-description' => 'this user already likes this engagement',
             ], Response::HTTP_NOT_ACCEPTABLE);
         }
@@ -645,7 +645,7 @@ class EngagementController extends Controller
         if (! ($invitedUser || ($engagement->privacy == config('const.privacy.public')))) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_access'),
+                'error-code'        => config('const.errors.unauthorized_access'),
                 'error-description' => 'this user has no authority to like this engagement',
             ], Response::HTTP_NOT_FOUND);
         }
@@ -657,7 +657,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'like successfully created',
             'id'                => $like->id,
         ], Response::HTTP_OK);
@@ -678,7 +678,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no engagement was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -690,7 +690,7 @@ class EngagementController extends Controller
         if (!$like) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_creation'),
+                'error-code'        => config('const.errors.unauthorized_creation'),
                 'error-description' => 'this user has not liked this engagement',
             ], Response::HTTP_NOT_ACCEPTABLE);
         }
@@ -699,7 +699,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'like successfully removed',
         ], Response::HTTP_OK);
     }
@@ -723,7 +723,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no engagement was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -733,7 +733,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no user was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -758,7 +758,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_creation'),
+                'error-code'        => config('const.errors.unauthorized_creation'),
                 'error-description' => 'this user has no authority to save a photo for this engagement',
             ], Response::HTTP_NOT_ACCEPTABLE);
         }
@@ -774,7 +774,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully saved the photo',
         ], Response::HTTP_OK);
     }
@@ -796,7 +796,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no engagement was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -806,7 +806,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no user was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -832,14 +832,14 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_access'),
+                'error-code'        => config('const.errors.unauthorized_access'),
                 'error-description' => 'this user has no authority to access this engagements photos',
             ], Response::HTTP_NOT_ACCEPTABLE);
         }
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully authorized retrieved photos',
             'photos'            => $engagement->photos()
                                               ->where('authorized', '=', 1)
@@ -864,7 +864,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'this user does not have a engagement'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -874,7 +874,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no photo was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -883,7 +883,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_creation'),
+                'error-code'        => config('const.errors.unauthorized_creation'),
                 'error-description' => 'this photo does not belong to this users engagement'
             ], Response::HTTP_NOT_ACCEPTABLE);
         }
@@ -893,7 +893,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'photo successfully authorized',
         ], Response::HTTP_OK);
     }
@@ -915,7 +915,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'this user does not have a engagement'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -934,7 +934,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully retrieved photos',
             'photos'            => $engagement->photos()
                                               ->where('authorized', '=', 0)
@@ -955,7 +955,7 @@ class EngagementController extends Controller
     // {
     //     return response()->json([
     //         'error'             => false,
-    //         'error-code'        => config('const.error.success'),
+    //         'error-code'        => config('const.errors.success'),
     //         'error-description' => 'successfully retrieved photos for engagement',
     //         'photos'            => EngagementPhoto::paginate(config('const.pages.small'))->toArray(),
     //     ], Response::HTTP_OK);
@@ -976,7 +976,7 @@ class EngagementController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.not_found'),
+                'error-code'        => config('const.errors.not_found'),
                 'error-description' => 'no photo was found for the given id'
             ], Response::HTTP_NOT_FOUND);
         }
@@ -988,7 +988,7 @@ class EngagementController extends Controller
             && $photoEngagement->bride_id != $id) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.unauthorized_access'),
+                'error-code'        => config('const.errors.unauthorized_access'),
                 'error-description' => 'this user cannot delete this photo'
             ], Response::HTTP_NOT_ACCEPTABLE);
         }
@@ -997,7 +997,7 @@ class EngagementController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'photo successfully deleted',
         ], Response::HTTP_OK);
     }

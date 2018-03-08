@@ -54,12 +54,13 @@ use App\Http\Requests\User\SearchRequest;
  * ### Possible Errors
  * This shows all the error codes generated from this model
  *
- * | Error | Description| Code|
- * |-------|-------|-------:|
- * | Invalid login| User attempts to login with wrong credentials| 100|
- * | User not found| Required user not found | 101|
- * | User account created using facebook| User attempts to login with email and password but account was registered using Facebook | 102|
- * | Email not verified| User attempts login with an unverified email|103|
+ * | Code | Description|
+ * |-------|-------:|
+ * | 100 | Invalid login |
+ * | 101 | Required user not found |
+ * | 102 | User account created using Facebook |
+ * | 103 | Email not verified |
+ * | 104 | Facebook ID not found |
  *
  */
 class UserController extends Controller
@@ -208,7 +209,7 @@ class UserController extends Controller
 
                 return response()->json([
                     'error'             => true,
-                    'error-code'        => config('const.error.invalid_login'),
+                    'error-code'        => config('const.errors.invalid_login'),
                     'error-description' => 'invalid login credentials'
                 ], Response::HTTP_UNAUTHORIZED);
             }
@@ -217,7 +218,7 @@ class UserController extends Controller
 
             return response()->json([
                 'error'                 => true,
-                'error-code'            => config('const.error.internal_error'),
+                'error-code'            => config('const.errors.internal_error'),
                 'error-description'     => 'could not create token',
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
 
@@ -225,7 +226,7 @@ class UserController extends Controller
 
         return response()->json([
             'error'                 => false,
-            'error-code'            => config('const.error.success'),
+            'error-code'            => config('const.errors.success'),
             'error-description'     => 'successfully logged in',
             'token'                 => $token,
             'user'                  => new UserResource($user),
@@ -248,7 +249,7 @@ class UserController extends Controller
 
             return response()->json([
                 'error'             => false,
-                'error-code'        => config('const.error.success'),
+                'error-code'        => config('const.errors.success'),
                 'error-description' => 'token successfully refreshed',
                 'new-token'         => $refreshToken
             ], Response::HTTP_OK);
@@ -256,7 +257,7 @@ class UserController extends Controller
 
             return response()->json([
                 'error'                 => true,
-                'error-code'            => config('const.error.internal_error'),
+                'error-code'            => config('const.errors.internal_error'),
                 'error-description'     => 'could not refresh token'
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
@@ -310,9 +311,9 @@ class UserController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully got users',
-            'users'             => $query->paginate($request->count ? $request->count : 10),
+            'users'             => UserResource::collection($query->paginate($request->count ? $request->count : 10)),
         ], Response::HTTP_OK);
 
     }
@@ -330,10 +331,10 @@ class UserController extends Controller
 
         if ($request->phone) {
 
-            $query->where('phone', '=', $request->phone);
+            $query->where('phone', $request->phone);
         } else {
             
-            $query->where('email', '=', $request->email);
+            $query->where('email', $request->email);
         }
 
         $user = $query->first();
@@ -341,7 +342,7 @@ class UserController extends Controller
 
             return response()->json([
                 'error'             => false,
-                'error-code'        => config('const.error.success'),
+                'error-code'        => config('const.errors.success'),
                 'error-description' => 'successfully got user',
                 'user'             => new UserResource($user),
             ], Response::HTTP_OK);
@@ -349,7 +350,7 @@ class UserController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.user_not_found'),
+                'error-code'        => config('const.errors.user_not_found'),
                 'error-description' => 'could not get user',
             ], Response::HTTP_OK);
         }
@@ -369,14 +370,14 @@ class UserController extends Controller
         if (! $user) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.user_not_found'),
+                'error-code'        => config('const.errors.user_not_found'),
                 'error-description' => 'could not find user for the id provided',
             ], Response::HTTP_NOT_FOUND);
         }
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'successfully go the user',
             'user'              => new UserResource($user),
         ], Response::HTTP_OK);
@@ -396,14 +397,14 @@ class UserController extends Controller
         if (! $user) {
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.user_not_found'),
+                'error-code'        => config('const.errors.user_not_found'),
                 'error-description' => 'could not get user'
             ], Response::HTTP_NOT_FOUND);
         }
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'here comes the user :)',
             'user'              => new UserResource($user),
         ], Response::HTTP_OK);
@@ -465,7 +466,7 @@ class UserController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'user successfully logged out'
         ], Response::HTTP_OK);
     }
@@ -489,7 +490,7 @@ class UserController extends Controller
 
             return response()->json([
                 'error'             => false,
-                'error-code'        => config('const.error.success'),
+                'error-code'        => config('const.errors.success'),
                 'error-description' => 'user successfully deleted'
             ], Response::HTTP_OK);
 
@@ -497,7 +498,7 @@ class UserController extends Controller
 
             return response()->json([
                 'error'             => true,
-                'error-code'        => config('const.error.user_not_found'),
+                'error-code'        => config('const.errors.user_not_found'),
                 'error-description' => 'no user could be found'
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
@@ -521,7 +522,7 @@ class UserController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'password succcesfully created'
         ], Response::HTTP_OK);
     }
@@ -540,7 +541,7 @@ class UserController extends Controller
 
         return response()->json([
             'error'             => false,
-            'error-code'        => config('const.error.success'),
+            'error-code'        => config('const.errors.success'),
             'error-description' => 'phone succcesfully added'
         ], Response::HTTP_OK);
     }
