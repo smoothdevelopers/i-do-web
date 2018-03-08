@@ -162,7 +162,7 @@ class UserController extends Controller
 
         return response()->json([
             'error'                 => false,
-            'error-code'            => config('const.error.success'),
+            'error-code'            => config('const.errors.success'),
             'error-description'     => 'successfully logged in',
             'token'                 => $token
         ], Response::HTTP_OK);
